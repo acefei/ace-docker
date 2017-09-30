@@ -1,5 +1,6 @@
 ### Warm Up
 [Docker的安装包以及周边高速镜像](http://get.daocloud.io/#install-docker)
+
 [编写Dockerfile的最佳实践](http://cizixs.com/2017/03/28/dockerfile-best-practice)
 
 ### Base Docker Image Privatization
