@@ -1,3 +1,4 @@
+#!/bin/sh
 # Set vm.max_map_count in /etc/sysctl.conf on the host itself, 
 # so that elasticsearch does not attempt to do that from inside the docker container.
 sudo sysctl -w vm.max_map_count=262144
