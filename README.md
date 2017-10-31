@@ -42,5 +42,8 @@ docker build -t <user_name>/<image_name>[:<tag>] .
 docker push <user_name>/<image_name>[:<tag>]
 ```
 
+> Note:
+For convenience, we can run `ln -sf ../build.sh .` in each sub-folder, and then run `./build.sh` to build docker image.
+
 ### Inspiration
 [编写Dockerfile的最佳实践](http://cizixs.com/2017/03/28/dockerfile-best-practice)

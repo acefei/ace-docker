@@ -1,5 +1,5 @@
 #!/bin/sh
-
+# Don't modify this file
 c_dir=$(cd $(dirname "$0") && pwd)
 image_name=${c_dir##*/}
 
