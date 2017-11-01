@@ -1,0 +1,6 @@
+#spiderkeeper
+scrapy-redis
+requests
+scrapyd
+readability-lxml
+fake-useragent

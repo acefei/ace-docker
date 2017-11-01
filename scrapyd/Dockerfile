@@ -1,17 +1,15 @@
 From acefei/python2
 
-VOLUME /data
+WORKDIR /data
 
-RUN pip --no-cache-dir install spiderkeeper \
-                               scrapyd \
-                               scrapy-redis \
+COPY requirements.txt /tmp/
+COPY scrapyd.conf  /etc/scrapyd/
+COPY supervisord.conf /etc/supervisor/conf.d/
+
+RUN pip --no-cache-dir install -r /tmp/requirements.txt \
     && apt-get update \
     && apt-get install -y supervisor \
     && apt-get clean
-
-
-COPY scrapyd.conf  /etc/scrapyd/scrapyd.conf
-COPY supervisord.conf /etc/supervisor/conf.d
 
 # scrapyd port
 EXPOSE 6800
@@ -21,5 +19,8 @@ EXPOSE 5000
 
 # supervisord port
 # EXPOSE 80
+
+# share logs 
+VOLUME /data
 
 ENTRYPOINT ["supervisord"]
