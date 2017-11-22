@@ -12,8 +12,8 @@ RUN echo 'export PATH=/opt/conda/bin:$PATH' > /etc/profile.d/conda.sh \
  && /opt/conda/bin/conda config --set show_channel_urls yes \
  && /opt/conda/bin/conda install jupyter -y --quiet
 
-ENV PATH=/opt/conda/bin:$PATH \
 # http://bugs.python.org/issue19846
 # > At the moment, setting "LANG=C" on a Linux system *fundamentally breaks Python 3*, and that's not OK.
+ENV PATH=/opt/conda/bin:$PATH \
 LANG=C.UTF-8
 
