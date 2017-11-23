@@ -45,5 +45,19 @@ docker push <user_name>/<image_name>[:<tag>]
 > Note:
 For convenience, we can run `ln -sf ../build.sh .` in each sub-folder, and then run `./build.sh` to build docker image.
 
+### Maintain docker-elk sub-project
+```
+# git remote add --fetch <remote repo alias> <remote repo url>
+git remote add -f docker-elk https://github.com/deviantony/docker-elk.git
+
+# git subtree add --prefix=<sub folder> <remote repo url | remote repo alias> <branch> --squash
+git subtree add --prefix=docker-elk docker-elk master --squash
+
+# git subtree pull --prefix=<sub folder> <remote repo url | remote repo alias> <branch> --squash
+git subtree pull --prefix=docker-elk docker-elk master --squash
+
+# git subtree push --prefix=<sub folder> <remote repo url | remote repo alias> <branch> --squash
+git subtree push --prefix=docker-elk docker-elk master --squash
+```
 ### Inspiration
 [编写Dockerfile的最佳实践](http://cizixs.com/2017/03/28/dockerfile-best-practice)
