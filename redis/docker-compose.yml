@@ -1,0 +1,8 @@
+version: '2'
+
+services:
+  redis:
+    image: acefei/redis
+    ports: 
+    - 6379
+    command: redis-server /etc/redis/redis.conf --requirepass "${REDIS_PWD}"

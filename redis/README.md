@@ -1,4 +1,4 @@
-### Usage
+### Docker 
 
 #### Run `redis-server`
 
@@ -15,3 +15,23 @@
 #### Run `redis-cli`
 
     docker run -it --rm --link redis:redis dockerfile/redis bash -c 'redis-cli -h redis'
+
+
+### Docker Compose
+    
+    docker-compose up --scale redis=2
+
+Note:
+1. when you use scale option:
+use
+```
+ports:
+- 6379
+```
+instead of 
+```
+ports:
+- 6379:6379
+```
+
+2. the REDIS_PWD enviroment is defined in $PWD/.env
