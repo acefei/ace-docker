@@ -1,7 +1,7 @@
 # Docker ELK stack
 
 [![Join the chat at https://gitter.im/deviantony/docker-elk](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/deviantony/docker-elk?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![Elastic Stack version](https://img.shields.io/badge/ELK-6.0.0-blue.svg?style=flat)](https://github.com/deviantony/docker-elk/issues/196)
+[![Elastic Stack version](https://img.shields.io/badge/ELK-6.1.0-blue.svg?style=flat)](https://github.com/deviantony/docker-elk/issues/212)
 [![Build Status](https://api.travis-ci.org/deviantony/docker-elk.svg?branch=master)](https://travis-ci.org/deviantony/docker-elk)
 
 Run the latest version of the ELK (Elasticsearch, Logstash, Kibana) stack with Docker and Docker Compose.
@@ -65,6 +65,8 @@ $ chcon -R system_u:object_r:admin_home_t:s0 docker-elk/
 
 ### Bringing up the stack
 
+**Note**: In case you switched branch or updated a base image - you may need to run `docker-compose build` first
+
 Start the ELK stack using `docker-compose`:
 
 ```console
@@ -115,15 +117,16 @@ about the index pattern configuration.
 
 #### On the command line
 
-Run this command to create a Kibana index pattern:
+Create an index pattern via the Kibana API:
 
 ```console
-$ curl -XPUT -D- 'http://localhost:9200/.kibana/doc/index-pattern:docker-elk' \
+$ curl -XPOST -D- 'http://localhost:5601/api/saved_objects/index-pattern' \
     -H 'Content-Type: application/json' \
-    -d '{"type": "index-pattern", "index-pattern": {"title": "logstash-*", "timeFieldName": "@timestamp"}}'
+    -H 'kbn-version: 6.1.0' \
+    -d '{"attributes":{"title":"logstash-*","timeFieldName":"@timestamp"}}'
 ```
 
-This will automatically be marked as the default index pattern as soon as the Kibana UI is opened for the first time.
+The created pattern will automatically be marked as the default index pattern as soon as the Kibana UI is opened for the first time.
 
 ## Configuration
 
