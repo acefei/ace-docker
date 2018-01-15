@@ -1,0 +1,28 @@
+language: python
+
+sudo: required
+
+services:
+  - docker
+
+notifications:
+    slack: seleniumhq:Kx5MB7T51SPMpbBMYfvxNW4q
+
+before_install:
+  - docker info
+  - VERSION="$TRAVIS_BRANCH" make build
+
+script:
+  - VERSION="$TRAVIS_BRANCH" make test
+
+# only push up tags
+after_success:
+  - if [ "$TRAVIS_TAG" != "" ]; then
+    docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+    VERSION="$TRAVIS_TAG" make release;
+    fi
+  - if [[ "$TRAVIS_TAG" == "$LATEST"* ]]; then
+    docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+    VERSION="$TRAVIS_TAG" make tag_latest;
+    VERSION="latest" make release_latest;
+    fi
