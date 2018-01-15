@@ -43,9 +43,7 @@ docker push <user_name>/<image_name>[:<tag>]
 ```
 
 > Note:
-
 > 1. we can run `ln -sf ../build.sh .` in each sub-folder, and then run `./build.sh` to build docker image by manual.
-
 > 2. [Configure automated builds on Docker Hub](https://docs.docker.com/docker-hub/builds/)
 
 
