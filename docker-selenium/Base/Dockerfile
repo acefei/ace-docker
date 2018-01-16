@@ -23,7 +23,6 @@ RUN apt-get -qqy update \
     openjdk-8-jre-headless \
     tzdata \
     sudo \
-    ttf-wqy-microhei \
     unzip \
     wget \
   && rm -rf /var/lib/apt/lists/* /var/cache/apt/* \

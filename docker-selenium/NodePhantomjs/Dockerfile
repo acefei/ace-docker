@@ -5,7 +5,7 @@ USER root
 
 # PhantomJS
 RUN apt-get update -y \
-    && apt-get install bzip2 libfreetype6 libfontconfig1 libicu55  -y \
+    && apt-get install bzip2 libfreetype6 libfontconfig1 libicu55 ttf-wqy-microhei -y \
     && rm -rf /var/lib/apt/lists/* /var/cache/apt/* 
 
 RUN wget https://raw.githubusercontent.com/prospress/phantomjs/2-1-1-hub-fix/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2
